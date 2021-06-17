@@ -12,11 +12,40 @@ import {
   ButtonsContainer,
 } from "@styles/pages/index.style";
 import useQuestion from "data/hooks/pages/useQuestion.page";
+import { useEffect, useState } from "react";
+import { ApiService } from "data/services/ApiService";
 
 export default function QuestionPage() {
+  const {
+    numberOfQuestions,
+    setNumberOfQuestions,
+    numberValid,
+    searchQuestions,
+    error,
+    loading,
+    questions,
+    setQuestions,
+  } = useQuestion();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setQuestions(JSON.parse(localStorage.getItem("formData")));
+    }
+  }, []);
+
+
+  const handleShuffle = (options) => {
+    return options.sort(() => Math.random() - 0.5);
+  };
   return (
     <div>
-      <h1>a</h1>
+      {questions}
+      <h2>a</h2>
+      {questions.map((item, index) => (
+        <li key={index}>
+          <h2>{item.difficulty}</h2>
+        </li>
+      ))}
     </div>
   );
 }

@@ -1,8 +1,8 @@
 export interface QuestionShortInterface {
-  category: string;
-  type: string;
-  difficulty: string;
-  question: string;
-  correct_answer: string;
-  incorret_answers: [];
+  category: [];
+  correct_answer: [];
+  difficulty: [];
+  incorrect_answers: [];
+  question: [];
+  type: [];
 }

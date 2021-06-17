@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { QuestionShortInterface } from "data/@types/QuestInterface";
 import { ValidationService } from "data/services/ValidationService";
 import { ApiService } from "data/services/ApiService";
@@ -6,6 +6,7 @@ import Router from "next/router";
 
 export default function useIndex() {
   const [numberOfQuestions, setNumberOfQuestions] = useState(""),
+    [totalNumber, setTotalNumber] = useState(""),
     numberValid = useMemo(() => {
       return ValidationService.numberOfQuestions(numberOfQuestions);
     }, [numberOfQuestions]),
@@ -18,7 +19,6 @@ export default function useIndex() {
     setSearchOk(false);
     setLoading(true);
     setError("");
-
     try {
       const { data } = await ApiService.get<{
         results: QuestionShortInterface[];
@@ -26,12 +26,15 @@ export default function useIndex() {
       setQuestions(data.results);
       setSearchOk(true);
       setLoading(false);
-      Router.push("/QuestionPage");
     } catch (error) {
       setError("Não encontrado!" + error);
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(questions));
+  }, [questions]);
 
   return {
     numberOfQuestions,
@@ -40,6 +43,7 @@ export default function useIndex() {
     searchQuestions,
     error,
     questions,
+    setQuestions,
     searchOk,
     loading,
   };
