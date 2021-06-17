@@ -19,6 +19,7 @@ import Paper from "@material-ui/core/Paper";
 
 interface PageTitleProps {
   questions: QuestionShortInterface[];
+  answers: String[];
 }
 
 const QuestionWidget: React.FC<PageTitleProps> = (props) => {
@@ -44,7 +45,7 @@ const QuestionWidget: React.FC<PageTitleProps> = (props) => {
                     </Description>
                     <Typography variant="h5">{item.question}</Typography>
 
-                    {/* <FormControl fullWidth variant="outlined">
+                    <FormControl fullWidth variant="outlined">
                       <InputLabel id="answer-select-label">
                         Select answer:
                       </InputLabel>
@@ -53,21 +54,9 @@ const QuestionWidget: React.FC<PageTitleProps> = (props) => {
                         name="answer"
                         id="answer-select"
                         label="Select answer"
-                        value={
-                          relatedAnswer(quiz.question, selectedAnswers) || ""
-                        }
                         labelId="answer-select-label"
-                        onChange={(e) => handleAnswerChange(e, quiz.question)}
-                      >
-                        {props.questions.map((answer) => (
-                          <MenuItem key={answer} value={answer}>
-                            <span
-                              dangerouslySetInnerHTML={createMarkup(answer)}
-                            />
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl> */}
+                      ></Select>
+                    </FormControl>
                   </BoxQuestionContainer>
                 </Paper>
               </Grid>

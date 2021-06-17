@@ -25,29 +25,35 @@ export default function Home() {
     error,
     loading,
     questions,
+    setQuestions,
     searchOk,
   } = useQuestion();
 
   const [answers, setAnswers] = useState([]);
+  let answerAux = [];
 
   useEffect(() => {
-    
-    setAnswers(questions.incorrect_answers);
-    console.log('esse aqui');
-    console.log(answers);
-  }, [questions]);
+    questions.forEach(function (answers, index) {
+      answerAux.push(answers.incorrect_answers);
+    });
+    questions.forEach(function (answers, index) {
+      answerAux[index].push(answers.correct_answer);
+    });
 
-  const handleShuffle = (options) => {
-    return options.sort(() => Math.random() - 0.5);
-  };
+    answerAux.sort(function (answerAux, b) {
+      return Math.floor(Math.random() * 10);
+    });
 
-
+    setAnswers(answerAux);
+    setQuestions(answerAux);
+  }, []);
 
   return (
     <>
+      <h2>{answers}</h2>
       {searchOk ? (
         <>
-          <QuestionWidget questions={questions} />
+          <QuestionWidget questions={questions} answers={answers} />
         </>
       ) : (
         <>
