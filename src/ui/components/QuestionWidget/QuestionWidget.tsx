@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState, useEffect } from "react";
 import {
   BoxQuestions,
   Description,
@@ -16,19 +16,41 @@ import {
 import PageTitle from "../PageTitle/PageTitle";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+import useQuestion from "data/hooks/pages/useQuestion.page";
 
 interface PageTitleProps {
   questions: QuestionShortInterface[];
-  answers: String[];
 }
 
 const QuestionWidget: React.FC<PageTitleProps> = (props) => {
+  const [answers, setAnswers] = useState([]);
+  let answerAux = [];
+
+  useEffect(() => {
+    props.questions.forEach(function (answers, index) {
+      answerAux.push(answers.incorrect_answers);
+    });
+    props.questions.forEach(function (answers, index) {
+      answerAux[index].push(answers.correct_answer);
+    });
+
+    answerAux.sort(function (answerAux, b) {
+      return Math.floor(Math.random() * 10);
+    });
+
+    setAnswers(answerAux);
+  }, []);
+
+  const createMarkup = (text) => {
+    return { __html: text };
+  };
+
   return (
     <>
       <BoxQuestions>
         <Container maxWidth="sm">
-          <Typography m="2rem" color="white" variant="h5">
-            Answer the following questions! Good luck :D
+          <Typography m="2rem" color="black" variant="h5">
+            Answer the following questions! good luck ❤️
           </Typography>
           <Grid container spacing={3}>
             {props.questions.map((item, index) => (
@@ -55,7 +77,17 @@ const QuestionWidget: React.FC<PageTitleProps> = (props) => {
                         id="answer-select"
                         label="Select answer"
                         labelId="answer-select-label"
-                      ></Select>
+                      >
+                        {props.questions[index].incorrect_answers.map(
+                          (answer, index) => (
+                            <MenuItem key={answer} value={answer}>
+                              <span
+                                dangerouslySetInnerHTML={createMarkup(answer)}
+                              ></span>
+                            </MenuItem>
+                          )
+                        )}
+                      </Select>
                     </FormControl>
                   </BoxQuestionContainer>
                 </Paper>

@@ -2,13 +2,8 @@ import { experimentalStyled as styled } from "@material-ui/core/styles";
 
 export const BoxQuestions = styled("div")`
   padding: ${({ theme }) => theme.spacing(2)};
-  background-image: linear-gradient(
-    to bottom right,
-    ${({ theme }) => theme.palette.secondary.light},
-    ${({ theme }) => theme.palette.secondary.dark}
-  );
   overflow-y: scroll;
-  height: 78vh;
+  height: 75vh;
 `;
 
 export const Description = styled("div")`

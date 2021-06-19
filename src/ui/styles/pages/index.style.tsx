@@ -13,6 +13,12 @@ export const ButtonsContainer = styled("div")`
   display: flex;
   gap: ${({ theme }) => theme.spacing(5)};
   ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 20vw;
+    gap: ${({ theme }) => theme.spacing(0)};
     flex-direction: column;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    width: 40vw;
   }
 `;

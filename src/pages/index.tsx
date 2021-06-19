@@ -29,31 +29,12 @@ export default function Home() {
     searchOk,
   } = useQuestion();
 
-  const [answers, setAnswers] = useState([]);
-  let answerAux = [];
-
-  useEffect(() => {
-    questions.forEach(function (answers, index) {
-      answerAux.push(answers.incorrect_answers);
-    });
-    questions.forEach(function (answers, index) {
-      answerAux[index].push(answers.correct_answer);
-    });
-
-    answerAux.sort(function (answerAux, b) {
-      return Math.floor(Math.random() * 10);
-    });
-
-    setAnswers(answerAux);
-    setQuestions(answerAux);
-  }, []);
 
   return (
     <>
-      <h2>{answers}</h2>
       {searchOk ? (
         <>
-          <QuestionWidget questions={questions} answers={answers} />
+          <QuestionWidget questions={questions}/>
         </>
       ) : (
         <>
