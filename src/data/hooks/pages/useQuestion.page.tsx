@@ -64,6 +64,9 @@ export function QuestionContextProvider({
   const [hasLocalStorage, setHasLocalStorage] = useState(false);
 
   async function searchQuestions(numberOfQuestions: Number) {
+    setSelected([]);
+    setCorrectAnswers(null);
+    setScore([]);
     setSearchOk(!searchOk);
     setLoading(!loading);
     setError("");
@@ -91,10 +94,6 @@ export function QuestionContextProvider({
     localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
     localStorage.setItem("score", JSON.stringify(score));
     localStorage.setItem("selected", JSON.stringify(selected));
-
-    localStorage.getItem("correctAnswers") === "null"
-      ? setHasLocalStorage(null)
-      : setHasLocalStorage(true);
   }, [questions, correctAnswers, score, selected]);
 
   return (

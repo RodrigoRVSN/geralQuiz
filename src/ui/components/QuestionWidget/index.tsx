@@ -43,7 +43,6 @@ const QuestionWidget = () => {
       answerAux[i] = answerAux[i]?.sort(() => Math.random() - 0.5);
     }
 
-
     setAllQuestions(answerAux);
   }, [questions]);
 

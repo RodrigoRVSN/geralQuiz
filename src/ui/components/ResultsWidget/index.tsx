@@ -26,7 +26,6 @@ const ResultsWidget = () => {
   } = useQuestion();
 
   function reset() {
-    setLoading(!loading);
     setSearchOk(!searchOk);
     setSubmitted(!submitted);
     setLoading(false);

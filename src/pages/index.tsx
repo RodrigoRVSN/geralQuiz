@@ -12,6 +12,7 @@ import {
   ButtonsContainer,
 } from "@styles/pages/index.style";
 import { useQuestion } from "data/hooks/pages/useQuestion.page";
+import { useEffect } from "react";
 
 export default function Home() {
   const {
@@ -26,7 +27,14 @@ export default function Home() {
     setQuestions,
     searchOk,
     hasLocalStorage,
+    setHasLocalStorage,
   } = useQuestion();
+
+  useEffect(() => {
+    localStorage.getItem("correctAnswers") === "null"
+      ? setHasLocalStorage(null)
+      : setHasLocalStorage(true);
+  });
 
   return (
     <>
