@@ -1,9 +1,3 @@
-import { useState, useMemo, useEffect } from "react";
-import { QuestionShortInterface } from "data/@types/QuestInterface";
-import { ValidationService } from "data/services/ValidationService";
-import { ApiService } from "data/services/ApiService";
-import Router from "next/router";
-
 export default function useIndex() {
   const [numberOfQuestions, setNumberOfQuestions] = useState(""),
     [totalNumber, setTotalNumber] = useState(""),
@@ -13,7 +7,10 @@ export default function useIndex() {
     [error, setError] = useState(""),
     [searchOk, setSearchOk] = useState(false),
     [loading, setLoading] = useState(false),
-    [questions, setQuestions] = useState([] as QuestionShortInterface[]);
+    [questions, setQuestions] = useState([] as QuestionShortInterface[]),
+    [score, setScore] = useState([]),
+    [selected, setSelected] = useState([]),
+    [submitted, setSubmitted] = useState(false);
 
   async function searchQuestions(numberOfQuestions: string) {
     setSearchOk(false);
@@ -46,5 +43,11 @@ export default function useIndex() {
     setQuestions,
     searchOk,
     loading,
+    score,
+    setScore,
+    selected,
+    setSelected,
+    submitted,
+    setSubmitted,
   };
 }

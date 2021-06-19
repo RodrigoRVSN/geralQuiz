@@ -6,6 +6,7 @@ import Head from "next/head";
 import Header from "ui/components/Header/Header";
 import Footer from "ui/components/Footer/Footer";
 import { AppContainer } from "ui/styles/pages/_app.style";
+import { QuestionContextProvider } from "../data/hooks/pages/useQuestion.page";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,14 +17,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/brain.jpg" />
       </Head>
 
-      <ThemeProvider theme={theme}>
-        <AppContainer>
-          <Header />
-
-          <Component {...pageProps} />
-          <Footer />
-        </AppContainer>
-      </ThemeProvider>
+      <QuestionContextProvider>
+        <ThemeProvider theme={theme}>
+          <AppContainer>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </AppContainer>
+        </ThemeProvider>
+      </QuestionContextProvider>
     </>
   );
 }

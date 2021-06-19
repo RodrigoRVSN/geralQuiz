@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   Button,
   Container,
@@ -13,8 +12,6 @@ import {
   ButtonsContainer,
 } from "@styles/pages/index.style";
 import useQuestion from "data/hooks/pages/useQuestion.page";
-import { useEffect, useState } from "react";
-import { ApiService } from "data/services/ApiService";
 
 export default function Home() {
   const {
@@ -29,12 +26,11 @@ export default function Home() {
     searchOk,
   } = useQuestion();
 
-
   return (
     <>
       {searchOk ? (
         <>
-          <QuestionWidget questions={questions}/>
+          <QuestionWidget questions={questions} />
         </>
       ) : (
         <>
