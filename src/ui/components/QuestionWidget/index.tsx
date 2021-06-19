@@ -28,7 +28,7 @@ const QuestionWidget = () => {
   } = useQuestion();
 
   /* Cria array com todas as respostas possíveis */
-  
+
   useEffect(() => {
     let answerAux = [];
     questions.forEach(function (answers, index) {

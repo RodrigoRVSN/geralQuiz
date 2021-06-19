@@ -5,6 +5,7 @@ export const FormElementsContainer = styled("div")`
   flex-direction: column;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(5)};
+  padding: ${({ theme }) => theme.spacing(5)};
   max-width: 40rem;
   margin: 0 auto ${({ theme }) => theme.spacing(7)};
 `;
