@@ -6,12 +6,12 @@ import {
   Typography,
 } from "@material-ui/core";
 import PageTitle from "ui/components/PageTitle/PageTitle";
-import QuestionWidget from "ui/components/QuestionWidget/QuestionWidget";
+import QuestionWidget from "ui/components/QuestionWidget";
 import {
   FormElementsContainer,
   ButtonsContainer,
 } from "@styles/pages/index.style";
-import useQuestion from "data/hooks/pages/useQuestion.page";
+import { useQuestion } from "data/hooks/pages/useQuestion.page";
 
 export default function Home() {
   const {
@@ -19,18 +19,20 @@ export default function Home() {
     setNumberOfQuestions,
     numberValid,
     searchQuestions,
+    searchResume,
     error,
     loading,
     questions,
     setQuestions,
     searchOk,
+    hasLocalStorage,
   } = useQuestion();
 
   return (
     <>
       {searchOk ? (
         <>
-          <QuestionWidget questions={questions} />
+          <QuestionWidget />
         </>
       ) : (
         <>
@@ -46,7 +48,7 @@ export default function Home() {
                 type="number"
                 InputLabelProps={{ shrink: true }}
                 value={numberOfQuestions}
-                onChange={(ev) => setNumberOfQuestions(ev.target.value)}
+                onChange={(ev) => setNumberOfQuestions(Number(ev.target.value))}
               />
 
               {error && <Typography color={"error"}>{error}</Typography>}
@@ -57,7 +59,7 @@ export default function Home() {
                   color={"primary"}
                   sx={{ marginTop: 5 }}
                   size={"medium"}
-                  onClick={() => setNumberOfQuestions("0")}
+                  onClick={() => setNumberOfQuestions(0)}
                   disabled={loading}
                 >
                   CANCEL
@@ -72,6 +74,16 @@ export default function Home() {
                   disabled={!numberValid || loading}
                 >
                   {loading ? <CircularProgress size={20} /> : "START"}
+                </Button>
+                <Button
+                  variant={"contained"}
+                  color={"secondary"}
+                  sx={{ marginTop: 5 }}
+                  size={"large"}
+                  onClick={() => searchResume()}
+                  disabled={!hasLocalStorage}
+                >
+                  RESUME
                 </Button>
               </ButtonsContainer>
             </FormElementsContainer>

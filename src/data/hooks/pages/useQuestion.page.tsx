@@ -6,6 +6,7 @@ import React, {
   createContext,
   Dispatch,
   SetStateAction,
+  useContext,
 } from "react";
 import { QuestionShortInterface } from "data/@types/QuestInterface";
 import { ValidationService } from "data/services/ValidationService";
@@ -16,17 +17,26 @@ type QuestionContextData = {
   setNumberOfQuestions: Dispatch<SetStateAction<number>>;
   numberValid: boolean;
   searchQuestions: (numberOfQuestions: Number) => void;
+  searchResume: () => void;
   error: String;
   questions: QuestionShortInterface[];
   setQuestions: Dispatch<SetStateAction<QuestionShortInterface[]>>;
   searchOk: boolean;
+  setSearchOk: Dispatch<SetStateAction<Boolean>>;
   loading: boolean;
+  setLoading: Dispatch<SetStateAction<Boolean>>;
   score: any[];
   setScore: Dispatch<SetStateAction<String[]>>;
   selected: any[];
   setSelected: Dispatch<SetStateAction<any[]>>;
   submitted: boolean;
-  setSubmitted: Dispatch<SetStateAction<boolean>>;
+  setSubmitted: Dispatch<SetStateAction<Boolean>>;
+  correctAnswers: Number;
+  setCorrectAnswers: Dispatch<SetStateAction<number>>;
+  allQuestions: any[];
+  setAllQuestions: Dispatch<SetStateAction<any[]>>;
+  hasLocalStorage: boolean;
+  setHasLocalStorage: Dispatch<SetStateAction<boolean>>;
 };
 
 export const QuestionContext = createContext({} as QuestionContextData);
@@ -36,10 +46,9 @@ type QuestionContextProviderProps = {
 };
 
 export function QuestionContextProvider({
-  children
+  children,
 }: QuestionContextProviderProps) {
-  const [numberOfQuestions, setNumberOfQuestions] = useState(0);
-  const [totalNumber, setTotalNumber] = useState(0);
+  const [numberOfQuestions, setNumberOfQuestions] = useState();
   const numberValid = useMemo(() => {
     return ValidationService.numberOfQuestions(numberOfQuestions);
   }, [numberOfQuestions]);
@@ -47,30 +56,46 @@ export function QuestionContextProvider({
   const [searchOk, setSearchOk] = useState(false);
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState([] as QuestionShortInterface[]);
+  const [allQuestions, setAllQuestions] = useState([]);
   const [score, setScore] = useState([]);
   const [selected, setSelected] = useState([]);
   const [submitted, setSubmitted] = useState(false);
+  const [correctAnswers, setCorrectAnswers] = useState(null);
+  const [hasLocalStorage, setHasLocalStorage] = useState(false);
 
   async function searchQuestions(numberOfQuestions: Number) {
-    setSearchOk(false);
-    setLoading(true);
+    setSearchOk(!searchOk);
+    setLoading(!loading);
     setError("");
     try {
       const { data } = await ApiService.get<{
         results: QuestionShortInterface[];
       }>("/api.php?amount=" + numberOfQuestions);
       setQuestions(data.results);
-      setSearchOk(true);
-      setLoading(false);
+      setSearchOk(!searchOk);
+      setLoading(!loading);
     } catch (error) {
       setError("Não encontrado!" + error);
       setLoading(false);
     }
   }
 
+  function searchResume() {
+    setQuestions(JSON.parse(localStorage.getItem("questionApi")));
+    setSubmitted(!submitted);
+    setSearchOk(!searchOk);
+  }
+
   useEffect(() => {
-    localStorage.setItem("formData", JSON.stringify(questions));
-  }, [questions]);
+    localStorage.setItem("questionApi", JSON.stringify(questions));
+    localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
+    localStorage.setItem("score", JSON.stringify(score));
+    localStorage.setItem("selected", JSON.stringify(selected));
+
+    localStorage.getItem("correctAnswers") === "null"
+      ? setHasLocalStorage(null)
+      : setHasLocalStorage(true);
+  }, [questions, correctAnswers, score, selected]);
 
   return (
     <QuestionContext.Provider
@@ -79,20 +104,32 @@ export function QuestionContextProvider({
         setNumberOfQuestions,
         numberValid,
         searchQuestions,
+        searchResume,
         error,
         questions,
         setQuestions,
         searchOk,
+        setSearchOk,
         loading,
+        setLoading,
         score,
         setScore,
         selected,
         setSelected,
         submitted,
         setSubmitted,
+        correctAnswers,
+        setCorrectAnswers,
+        allQuestions,
+        setAllQuestions,
+        hasLocalStorage,
+        setHasLocalStorage,
       }}
     >
       {children}
     </QuestionContext.Provider>
   );
 }
+export const useQuestion = () => {
+  return useContext(QuestionContext);
+};
