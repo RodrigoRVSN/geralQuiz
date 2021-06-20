@@ -4,46 +4,22 @@ import React, {
   useMemo,
   useEffect,
   createContext,
-  Dispatch,
-  SetStateAction,
   useContext,
 } from "react";
 import { QuestionShortInterface } from "data/@types/QuestInterface";
+import { QuestionContextData } from "data/@types/QuestionContextData";
 import { ValidationService } from "data/services/ValidationService";
 import { ApiService } from "data/services/ApiService";
 
-type QuestionContextData = {
-  numberOfQuestions: Number;
-  setNumberOfQuestions: Dispatch<SetStateAction<number>>;
-  numberValid: boolean;
-  searchQuestions: (numberOfQuestions: Number) => void;
-  searchResume: () => void;
-  error: String;
-  questions: QuestionShortInterface[];
-  setQuestions: Dispatch<SetStateAction<QuestionShortInterface[]>>;
-  searchOk: boolean;
-  setSearchOk: Dispatch<SetStateAction<Boolean>>;
-  loading: boolean;
-  setLoading: Dispatch<SetStateAction<Boolean>>;
-  score: any[];
-  setScore: Dispatch<SetStateAction<String[]>>;
-  selected: any[];
-  setSelected: Dispatch<SetStateAction<any[]>>;
-  submitted: boolean;
-  setSubmitted: Dispatch<SetStateAction<Boolean>>;
-  correctAnswers: Number;
-  setCorrectAnswers: Dispatch<SetStateAction<number>>;
-  allQuestions: any[];
-  setAllQuestions: Dispatch<SetStateAction<any[]>>;
-  hasLocalStorage: boolean;
-  setHasLocalStorage: Dispatch<SetStateAction<boolean>>;
-};
-
 export const QuestionContext = createContext({} as QuestionContextData);
+
+/* Props do Provedor */
 
 type QuestionContextProviderProps = {
   children: ReactNode;
 };
+
+/* Cria o contexto para comunicação entre os componentes */
 
 export function QuestionContextProvider({
   children,
@@ -62,6 +38,8 @@ export function QuestionContextProvider({
   const [submitted, setSubmitted] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(null);
   const [hasLocalStorage, setHasLocalStorage] = useState(false);
+
+  /* Requisição da API */
 
   async function searchQuestions(numberOfQuestions: Number) {
     setSelected([]);
@@ -83,11 +61,15 @@ export function QuestionContextProvider({
     }
   }
 
+  /* Procura resumo */
+
   function searchResume() {
     setQuestions(JSON.parse(localStorage.getItem("questionApi")));
     setSubmitted(!submitted);
     setSearchOk(!searchOk);
   }
+
+  /* Carrega dados no local storage */
 
   useEffect(() => {
     localStorage.setItem("questionApi", JSON.stringify(questions));
@@ -95,6 +77,8 @@ export function QuestionContextProvider({
     localStorage.setItem("score", JSON.stringify(score));
     localStorage.setItem("selected", JSON.stringify(selected));
   }, [questions, correctAnswers, score, selected]);
+
+  /* Retorna contexto */
 
   return (
     <QuestionContext.Provider
@@ -129,6 +113,9 @@ export function QuestionContextProvider({
     </QuestionContext.Provider>
   );
 }
+
+/* useQuestion para utilizar o contexto */
+
 export const useQuestion = () => {
   return useContext(QuestionContext);
 };

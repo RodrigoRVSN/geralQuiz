@@ -6,12 +6,12 @@ import {
   Typography,
 } from "@material-ui/core";
 import PageTitle from "ui/components/PageTitle/PageTitle";
-import QuestionWidget from "ui/components/QuestionWidget";
+import QuestionWidget from "./QuestionWidget";
 import {
   FormElementsContainer,
   ButtonsContainer,
 } from "@styles/pages/index.style";
-import { useQuestion } from "data/hooks/pages/useQuestion.page";
+import { useQuestion } from "data/hooks/useQuestion.page";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -23,18 +23,17 @@ export default function Home() {
     searchResume,
     error,
     loading,
-    questions,
     setQuestions,
     searchOk,
     hasLocalStorage,
     setHasLocalStorage,
   } = useQuestion();
-
+/* 
   useEffect(() => {
     localStorage.getItem("correctAnswers") === "null"
-      ? setHasLocalStorage(null)
+      ? setHasLocalStorage(false)
       : setHasLocalStorage(true);
-  });
+  }); */
 
   return (
     <>
@@ -65,7 +64,7 @@ export default function Home() {
                 <Button
                   variant={"contained"}
                   color={"primary"}
-                  sx={{ marginTop: 5 }}
+                  sx={{ marginTop: 3 }}
                   size={"medium"}
                   onClick={() => setNumberOfQuestions(0)}
                   disabled={loading}
@@ -76,7 +75,7 @@ export default function Home() {
                 <Button
                   variant={"contained"}
                   color={"secondary"}
-                  sx={{ marginTop: 5 }}
+                  sx={{ marginTop: 3 }}
                   size={"large"}
                   onClick={() => searchQuestions(numberOfQuestions)}
                   disabled={!numberValid || loading}
@@ -86,7 +85,7 @@ export default function Home() {
                 <Button
                   variant={"contained"}
                   color={"secondary"}
-                  sx={{ marginTop: 5 }}
+                  sx={{ marginTop: 3 }}
                   size={"large"}
                   onClick={() => searchResume()}
                   disabled={!hasLocalStorage}

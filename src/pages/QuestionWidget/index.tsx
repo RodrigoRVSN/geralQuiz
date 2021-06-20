@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { useQuestion } from "data/hooks/pages/useQuestion.page";
+import { useQuestion } from "data/hooks/useQuestion.page";
 import ResultsWidget from "../ResultsWidget";
 
 const QuestionWidget = () => {
@@ -36,13 +36,10 @@ const QuestionWidget = () => {
         answers.correct_answer
       );
     });
-
     /* embaralha a string */
-
     for (let i = 0; i < questions.length; i++) {
       answerAux[i] = answerAux[i]?.sort(() => Math.random() - 0.5);
     }
-
     setAllQuestions(answerAux);
   }, [questions]);
 

@@ -1,5 +1,4 @@
 import { experimentalStyled as styled } from "@material-ui/core/styles";
-import { Container, Typography } from "@material-ui/core";
 
 export const FooterStyled = styled("footer")`
   background-color: black;

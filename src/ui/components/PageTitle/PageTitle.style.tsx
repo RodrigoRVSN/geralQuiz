@@ -1,11 +1,11 @@
 import { experimentalStyled as styled } from '@material-ui/core/styles';
 
 export const PageTitleContainer = styled("div")`
-  margin: ${({ theme }) => theme.spacing(15)};
+  margin: ${({ theme }) => theme.spacing(10)};
   text-align: center;
 
   ${({ theme }) => theme.breakpoints.down("md")} {
-    margin: ${({ theme }) => theme.spacing(5)};
+    margin: ${({ theme }) => theme.spacing(3)};
   }
 `;
 

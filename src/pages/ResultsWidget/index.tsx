@@ -1,12 +1,8 @@
-import {
-  BoxQuestions,
-  Description,
-  BoxQuestionContainer,
-} from "./style";
+import { BoxQuestions, Description, BoxQuestionContainer } from "./style";
 import { Container, Typography, Button } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { useQuestion } from "data/hooks/pages/useQuestion.page";
+import { useQuestion } from "data/hooks/useQuestion.page";
 
 const ResultsWidget = () => {
   const {
