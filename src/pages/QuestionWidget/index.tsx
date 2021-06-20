@@ -1,10 +1,10 @@
 import react, { useEffect } from "react";
-import { useQuestion } from "data/hooks/useQuestion.page";
+import { useQuestion } from "../../data/hooks/useQuestion.page";
 import { BoxQuestions } from "./style";
 import { Container, Typography } from "@material-ui/core";
-import ButtonSubmit from "ui/components/Buttons/ButtonSubmit";
+import ButtonSubmit from "../../ui/components/Buttons/ButtonSubmit";
 import ResultsWidget from "../ResultsWidget";
-import QuestionCardMap from "ui/components/QuestionCardMap";
+import QuestionCardMap from "../../ui/components/QuestionCardMap";
 
 const QuestionWidget = () => {
   const { submitted, setSubmitted, questions, setAllQuestions } = useQuestion();

@@ -1,4 +1,4 @@
-import { useQuestion } from "data/hooks/useQuestion.page";
+import { useQuestion } from "../../../data/hooks/useQuestion.page";
 import { Description, BoxQuestionContainer } from "./style";
 import {
   Typography,
@@ -11,7 +11,6 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 const QuestionCardMap: React.FC = () => {
-  
   const { score, selected, questions, allQuestions } = useQuestion();
 
   /* Permite adicionar opções com o uso de select */

@@ -2,7 +2,7 @@ import { Description, BoxQuestionContainer } from "./style";
 import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { useQuestion } from "data/hooks/useQuestion.page";
+import { useQuestion } from "../../../data/hooks/useQuestion.page";
 
 const ResultCardMap: React.FC = () => {
   const { score, selected, questions } = useQuestion();

@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, TextField } from "@material-ui/core";
-import { useQuestion } from "data/hooks/useQuestion.page";
+import { TextField } from "@material-ui/core";
+import { useQuestion } from "../../../data/hooks/useQuestion.page";
 
 const InputFieldContainer: React.FC = () => {
   const { setNumberOfQuestions, numberOfQuestions } = useQuestion();

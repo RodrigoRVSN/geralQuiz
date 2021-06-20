@@ -1,16 +1,16 @@
-import { Button, Container, TextField, Typography } from "@material-ui/core";
-import PageTitle from "ui/components/PageTitle/PageTitle";
-import ButtonCancel from "ui/components/Buttons/ButtonCancel";
-import ButtonSearch from "ui/components/Buttons/ButtonSearch";
-import InputFieldContainer from "ui/components/Input";
+import { Container, Typography } from "@material-ui/core";
+import PageTitle from "../ui/components/PageTitle/PageTitle";
+import ButtonCancel from "../ui/components/Buttons/ButtonCancel";
+import ButtonSearch from "../ui/components/Buttons/ButtonSearch";
+import InputFieldContainer from "../ui/components/Input";
 import QuestionWidget from "./QuestionWidget";
 import {
   FormElementsContainer,
   ButtonsContainer,
-} from "@styles/pages/index.style";
-import { useQuestion } from "data/hooks/useQuestion.page";
+} from "../ui/styles/pages/index.style";
+import { useQuestion } from "../data/hooks/useQuestion.page";
 import { useEffect } from "react";
-import ButtonResume from "ui/components/Buttons/ButtonResume";
+import ButtonResume from "../ui/components/Buttons/ButtonResume";
 
 export default function Home() {
   const { error, searchOk, setHasLocalStorage } = useQuestion();
@@ -33,7 +33,7 @@ export default function Home() {
             title={"Welcome to the geral quiz!"}
             subtitle={"Select how much questions you want!"}
           />
-          
+
           <Container>
             <FormElementsContainer>
               <InputFieldContainer />

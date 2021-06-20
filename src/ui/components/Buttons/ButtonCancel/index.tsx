@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import { useQuestion } from "data/hooks/useQuestion.page";
+import { useQuestion } from "../../../../data/hooks/useQuestion.page";
 
 const ButtonCancel: React.FC = () => {
 
