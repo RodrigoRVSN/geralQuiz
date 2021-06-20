@@ -1,4 +1,37 @@
-🚧🚧🚧🚧 README EM MANUTENÇÃO 🚧🚧🚧🚧🚧
+
+### Site que utiliza a Trivia API para realizar um quiz, disponível em: https://geral-quiz.vercel.app/
+
+#####  Para a realização deste projeto feito com React, foi utilizadoa o Material UI como biblioteca para estilizar a aplicação. O intuito da aplicação é fazer uma requisição da Api de um quiz com diversas questões (https://opentdb.com/api.php?amount=QUANTIDADE) em que o usuário escolhe quantas quer responder, além de poder visualizar quais errou e acertou e suas respectivas respostas e, também, consultar estes dados através da tela inicial. 
+
+_________________________________________________________________________________________________________________________________________________________
+
+# 🛠 Technologies (Tecnologias)
+
+- React Framework (TS) + NextJS
+- Material UI
+- Context API
+
+_________________________________________________________________________________________________________________________________________________________
+
+# O que aprendi 😎
+
+- Utilizar o Material UI de maneira responsiva.
+- Renderização ternária entre componentes.
+- Uso de Context API de diversos States
+- Uso de Contexto com tipagem do Typescript
+- Uso de lógicas e princípios do javascript com uso de forEach e Map
+
+___________________________________________________________________________________________________________________________________________________________________
+
+# Gif
+
+________________________________________________________________________________________________________________________________________________
+
+<p align="center"><img src="public/quiz.gif"/></p>
+
+________________________________________________________________________________________________________________________________________
+
+# Dependências
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
