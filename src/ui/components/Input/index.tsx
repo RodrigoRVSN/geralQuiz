@@ -34,6 +34,7 @@ const InputFieldContainer: React.FC = () => {
     <>
       <form onSubmit={formik.handleSubmit}>
         <TextField
+        type="number"
           fullWidth
           id="numberOfQuestions"
           name="numberOfQuestions"
