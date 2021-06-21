@@ -19,12 +19,6 @@
     }
   },
   "include": [
-    "next-env.d.ts",
-    "/*.ts",
-    "/.tsx",
-    "src/pages/ResultsWidget",
-    "src/pages/QuestionWidget/question.test.js",
-    "jest.config.js"
-  ],
-  "exclude": ["node_modules", "**/.spec.tsx", "*/.test.tsx"]
+    "src"
+  ]
 }
