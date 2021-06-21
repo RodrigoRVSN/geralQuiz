@@ -16,7 +16,7 @@ export default function Home() {
   const { error, searchOk, setHasLocalStorage } = useQuestion();
 
   useEffect(() => {
-    localStorage.getItem("correctAnswers") === "null"
+    localStorage.getItem("correctAnswers") === "-1"
       ? setHasLocalStorage(false)
       : setHasLocalStorage(true);
   });

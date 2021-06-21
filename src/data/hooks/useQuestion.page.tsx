@@ -36,14 +36,14 @@ export function QuestionContextProvider({
   const [score, setScore] = useState([]);
   const [selected, setSelected] = useState([]);
   const [submitted, setSubmitted] = useState(false);
-  const [correctAnswers, setCorrectAnswers] = useState(null);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   const [hasLocalStorage, setHasLocalStorage] = useState(false);
 
   /* Requisição da API */
 
   async function searchQuestions(numberOfQuestions: Number) {
     setSelected([]);
-    setCorrectAnswers(null);
+    setCorrectAnswers(-1);
     setScore([]);
     setSearchOk(!searchOk);
     setLoading(!loading);
@@ -60,12 +60,13 @@ export function QuestionContextProvider({
       setLoading(false);
     }
   }
-
+  
   /* Procura resumo */
-
+  
   function searchResume() {
+    localStorage.setItem("correctAnswers", JSON.stringify("-1"));
     let aux = localStorage.getItem("questionApi");
-
+    
     setQuestions(JSON.parse(localStorage.getItem("questionApi") || "{}"));
     setSubmitted(!submitted);
     setSearchOk(!searchOk);

@@ -27,9 +27,7 @@ export type QuestionContextData = {
   setSubmitted: Dispatch<SetStateAction<boolean>>;
   correctAnswers: Number | null;
   setCorrectAnswers:
-    | Dispatch<SetStateAction<Number>>
-    | Dispatch<SetStateAction<never[]>>
-    | Dispatch<SetStateAction<null>>;
+    | Dispatch<SetStateAction<number>>
   allQuestions: any[];
   setAllQuestions: Dispatch<SetStateAction<never[]>>;
   hasLocalStorage: boolean;
