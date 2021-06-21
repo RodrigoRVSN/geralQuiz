@@ -2,8 +2,10 @@ import { Dispatch, SetStateAction } from "react";
 import { QuestionShortInterface } from "data/@types/QuestInterface";
 
 export type QuestionContextData = {
-  numberOfQuestions: Number;
-  setNumberOfQuestions: Dispatch<SetStateAction<number>>;
+  numberOfQuestions: Number | undefined;
+  setNumberOfQuestions:
+    | Dispatch<SetStateAction<number>>
+    | Dispatch<SetStateAction<undefined>>;
   numberValid: boolean;
   searchQuestions: (numberOfQuestions: Number) => void;
   searchResume: () => void;
@@ -11,19 +13,26 @@ export type QuestionContextData = {
   questions: QuestionShortInterface[];
   setQuestions: Dispatch<SetStateAction<QuestionShortInterface[]>>;
   searchOk: boolean;
-  setSearchOk: Dispatch<SetStateAction<Boolean>>;
+  setSearchOk: Dispatch<SetStateAction<boolean>>;
   loading: boolean;
-  setLoading: Dispatch<SetStateAction<Boolean>>;
+  setLoading: Dispatch<SetStateAction<boolean>>;
   score: any[];
-  setScore: Dispatch<SetStateAction<String[]>>;
+  setScore:
+    | Dispatch<SetStateAction<String[]>>
+    | Dispatch<SetStateAction<never[]>>;
   selected: any[];
-  setSelected: Dispatch<SetStateAction<any[]>>;
+  setSelected:
+    | Dispatch<SetStateAction<any[]>>
+    | Dispatch<SetStateAction<never[]>>;
   submitted: boolean;
-  setSubmitted: Dispatch<SetStateAction<Boolean>>;
-  correctAnswers: Number;
-  setCorrectAnswers: Dispatch<SetStateAction<number>>;
+  setSubmitted: Dispatch<SetStateAction<boolean>>;
+  correctAnswers: Number | null;
+  setCorrectAnswers:
+    | Dispatch<SetStateAction<Number>>
+    | Dispatch<SetStateAction<never[]>>
+    | Dispatch<SetStateAction<null>>;
   allQuestions: any[];
-  setAllQuestions: Dispatch<SetStateAction<any[]>>;
+  setAllQuestions: Dispatch<SetStateAction<never[]>>;
   hasLocalStorage: boolean;
   setHasLocalStorage: Dispatch<SetStateAction<boolean>>;
 };

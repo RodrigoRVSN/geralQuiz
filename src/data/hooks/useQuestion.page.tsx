@@ -64,7 +64,9 @@ export function QuestionContextProvider({
   /* Procura resumo */
 
   function searchResume() {
-    setQuestions(JSON.parse(localStorage.getItem("questionApi")));
+    let aux = localStorage.getItem("questionApi");
+
+    setQuestions(JSON.parse(localStorage.getItem("questionApi") || "{}"));
     setSubmitted(!submitted);
     setSearchOk(!searchOk);
   }
