@@ -18,6 +18,7 @@ export const FormElementsContainer = styled("div")`
 `;
 
 export const ButtonsContainer = styled("div")`
+  margin: auto;
   display: flex;
   gap: ${({ theme }) => theme.spacing(5)};
 

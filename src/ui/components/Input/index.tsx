@@ -1,20 +1,59 @@
-import React from "react";
-import { TextField } from "@material-ui/core";
+import React, { useEffect } from "react";
 import { useQuestion } from "../../../data/hooks/useQuestion.page";
+import TextField from "@material-ui/core/TextField";
+import { useFormik } from "formik";
+import ButtonSearch from "../Buttons/ButtonSearch";
+import ButtonCancel from "../Buttons/ButtonCancel";
+import ButtonResume from "../Buttons/ButtonResume";
+import { ButtonsContainer } from "../../styles/pages/index.style";
+import validationSchema from "../../../data/services/validationSchema";
 
 const InputFieldContainer: React.FC = () => {
-  const { setNumberOfQuestions, numberOfQuestions } = useQuestion();
+  const { searchQuestions, numberOfQuestions } = useQuestion();
+  const { setNumberOfQuestions } = useQuestion();
+
+  const formik = useFormik({
+    initialValues: {
+      numberOfQuestions: 0,
+    },
+    validationSchema: validationSchema,
+    onSubmit: () => {
+      if (numberOfQuestions != 0) {
+        searchQuestions(numberOfQuestions!);
+      } else {
+        formik.values.numberOfQuestions = 0;
+      }
+    },
+  });
+
+  useEffect(() => {
+    setNumberOfQuestions(formik.values.numberOfQuestions);
+  }, [formik.values.numberOfQuestions]);
 
   return (
     <>
-      <TextField
-        id="standard-number"
-        label="Number of questions"
-        type="number"
-        InputLabelProps={{ shrink: true }}
-        value={numberOfQuestions}
-        onChange={(ev) => setNumberOfQuestions(parseInt(ev.target.value))}
-      />
+      <form onSubmit={formik.handleSubmit}>
+        <TextField
+          fullWidth
+          id="numberOfQuestions"
+          name="numberOfQuestions"
+          label="Number of questions"
+          value={numberOfQuestions}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.numberOfQuestions &&
+            Boolean(formik.errors.numberOfQuestions)
+          }
+          helperText={
+            formik.touched.numberOfQuestions && formik.errors.numberOfQuestions
+          }
+        />
+        <ButtonsContainer>
+          <ButtonCancel />
+          <ButtonSearch />
+          <ButtonResume />
+        </ButtonsContainer>
+      </form>
     </>
   );
 };

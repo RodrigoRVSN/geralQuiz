@@ -3,8 +3,7 @@ import { Button, CircularProgress } from "@material-ui/core";
 import { useQuestion } from "../../../../data/hooks/useQuestion.page";
 
 const ButtonCancel: React.FC = () => {
-  const { searchQuestions, numberOfQuestions, numberValid, loading } =
-    useQuestion();
+  const { loading } = useQuestion();
 
   return (
     <>
@@ -13,8 +12,7 @@ const ButtonCancel: React.FC = () => {
         color={"secondary"}
         sx={{ marginTop: 3 }}
         size={"large"}
-        onClick={() => searchQuestions(numberOfQuestions!)}
-        disabled={!numberValid || loading}
+        type="submit"
       >
         {loading ? <CircularProgress size={20} /> : "START"}
       </Button>

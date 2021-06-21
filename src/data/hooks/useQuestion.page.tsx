@@ -1,14 +1,12 @@
 import React, {
   useState,
   ReactNode,
-  useMemo,
   useEffect,
   createContext,
   useContext,
 } from "react";
 import { QuestionShortInterface } from "data/@types/QuestInterface";
 import { QuestionContextData } from "data/@types/QuestionContextData";
-import { ValidationService } from "data/services/ValidationService";
 import { ApiService } from "data/services/ApiService";
 
 export const QuestionContext = createContext({} as QuestionContextData);
@@ -25,9 +23,6 @@ export function QuestionContextProvider({
   children,
 }: QuestionContextProviderProps) {
   const [numberOfQuestions, setNumberOfQuestions] = useState(0);
-  const numberValid = useMemo(() => {
-    return ValidationService.numberOfQuestions(numberOfQuestions);
-  }, [numberOfQuestions]);
   const [error, setError] = useState("");
   const [searchOk, setSearchOk] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -60,13 +55,11 @@ export function QuestionContextProvider({
       setLoading(false);
     }
   }
-  
+
   /* Procura resumo */
-  
+
   function searchResume() {
-    localStorage.setItem("correctAnswers", JSON.stringify("-1"));
-    let aux = localStorage.getItem("questionApi");
-    
+    localStorage.setItem("correctAnswers", JSON.stringify(-1));
     setQuestions(JSON.parse(localStorage.getItem("questionApi") || "{}"));
     setSubmitted(!submitted);
     setSearchOk(!searchOk);
@@ -88,7 +81,6 @@ export function QuestionContextProvider({
       value={{
         numberOfQuestions,
         setNumberOfQuestions,
-        numberValid,
         searchQuestions,
         searchResume,
         error,
