@@ -5,7 +5,6 @@ export type QuestionContextData = {
   numberOfQuestions: Number | undefined;
   setNumberOfQuestions:
     | Dispatch<SetStateAction<number>>
-    | Dispatch<SetStateAction<undefined>>;
   numberValid: boolean;
   searchQuestions: (numberOfQuestions: Number) => void;
   searchResume: () => void;

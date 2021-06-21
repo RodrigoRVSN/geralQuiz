@@ -12,7 +12,7 @@ const QuestionWidget = () => {
   /* Cria array com todas as respostas possíveis */
 
   useEffect(() => {
-    let answerAux = [];
+    let answerAux: any = [];
     questions.forEach(function (answers, index) {
       answerAux[index] = answers.incorrect_answers.concat(
         answers.correct_answer

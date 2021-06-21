@@ -24,7 +24,7 @@ type QuestionContextProviderProps = {
 export function QuestionContextProvider({
   children,
 }: QuestionContextProviderProps) {
-  const [numberOfQuestions, setNumberOfQuestions] = useState();
+  const [numberOfQuestions, setNumberOfQuestions] = useState(0);
   const numberValid = useMemo(() => {
     return ValidationService.numberOfQuestions(numberOfQuestions);
   }, [numberOfQuestions]);

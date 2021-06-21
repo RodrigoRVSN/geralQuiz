@@ -13,7 +13,7 @@ const InputFieldContainer: React.FC = () => {
         type="number"
         InputLabelProps={{ shrink: true }}
         value={numberOfQuestions}
-        onChange={(ev) => setNumberOfQuestions(Number(ev.target.value))}
+        onChange={(ev) => setNumberOfQuestions(parseInt(ev.target.value))}
       />
     </>
   );
