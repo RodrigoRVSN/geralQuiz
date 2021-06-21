@@ -3,7 +3,7 @@ import PageTitle from "../ui/components/PageTitle/PageTitle";
 import ButtonCancel from "../ui/components/Buttons/ButtonCancel";
 import ButtonSearch from "../ui/components/Buttons/ButtonSearch";
 import InputFieldContainer from "../ui/components/Input";
-import QuestionWidget from "./QuestionWidget";
+import QuestionWidgetPage from "../ui/components/QuestionWidgetPage";
 import {
   FormElementsContainer,
   ButtonsContainer,
@@ -25,7 +25,7 @@ export default function Home() {
     <>
       {searchOk ? (
         <>
-          <QuestionWidget />
+          <QuestionWidgetPage />
         </>
       ) : (
         <>
