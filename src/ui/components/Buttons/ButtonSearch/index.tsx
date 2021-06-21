@@ -13,7 +13,7 @@ const ButtonCancel: React.FC = () => {
         color={"secondary"}
         sx={{ marginTop: 3 }}
         size={"large"}
-        onClick={() => searchQuestions(numberOfQuestions)}
+        onClick={() => searchQuestions(numberOfQuestions!)}
         disabled={!numberValid || loading}
       >
         {loading ? <CircularProgress size={20} /> : "START"}
