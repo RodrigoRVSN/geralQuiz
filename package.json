@@ -9,7 +9,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "jest-environment": "^9.0.4",
     "jest-environment-jsdom": "^27.0.3",
     "next": "10.2.3",
     "react": "^17.0.2",
