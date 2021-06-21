@@ -4,7 +4,7 @@ import { useQuestion } from "data/hooks/useQuestion.page";
 import ButtonReturn from "ui/components/Buttons/ButtonReturn";
 import ResultCardMap from "ui/components/ResultCardMap";
 
-const ResultsWidget = () => {
+const ResultsWidgetPage = () => {
   const { score, correctAnswers, setCorrectAnswers } = useQuestion();
 
   setCorrectAnswers(score.filter((obj) => obj === true).length);
@@ -29,4 +29,4 @@ const ResultsWidget = () => {
   );
 };
 
-export default ResultsWidget;
+export default ResultsWidgetPage;

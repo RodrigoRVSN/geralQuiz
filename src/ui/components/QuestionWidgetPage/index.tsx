@@ -1,12 +1,12 @@
 import react, { useEffect } from "react";
-import { useQuestion } from "../../data/hooks/useQuestion.page";
+import { useQuestion } from "../../../data/hooks/useQuestion.page";
 import { BoxQuestions } from "./style";
 import { Container, Typography } from "@material-ui/core";
-import ButtonSubmit from "../../ui/components/Buttons/ButtonSubmit";
-import ResultsWidget from "../ResultsWidget";
-import QuestionCardMap from "../../ui/components/QuestionCardMap";
+import ButtonSubmit from "../Buttons/ButtonSubmit";
+import ResultsWidgetPage from "../ResultsWidgetPage";
+import QuestionCardMap from "../QuestionCardMap";
 
-const QuestionWidget = () => {
+const QuestionWidgetPage = () => {
   const { submitted, setSubmitted, questions, setAllQuestions } = useQuestion();
 
   /* Cria array com todas as respostas possíveis */
@@ -31,7 +31,7 @@ const QuestionWidget = () => {
     <>
       {submitted ? (
         <>
-          <ResultsWidget />
+          <ResultsWidgetPage />
         </>
       ) : (
         <>
@@ -56,4 +56,4 @@ const QuestionWidget = () => {
   );
 };
 
-export default QuestionWidget;
+export default QuestionWidgetPage;
