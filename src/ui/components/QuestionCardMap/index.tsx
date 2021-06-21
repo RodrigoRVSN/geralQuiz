@@ -15,13 +15,13 @@ const QuestionCardMap: React.FC = () => {
 
   /* Permite adicionar opções com o uso de select */
 
-  const createMarkup = (text) => {
+  const createMarkup = (text: string) => {
     return { __html: text };
   };
 
   /* Guarda questão selecionada e verifica se é a certa, sendo uma string para as verificações de verdadeiro e false e uma string para guardar as respostas selecionadas */
 
-  const handleAnswerChange = (e, selectedQuestion, index) => {
+  const handleAnswerChange = (e: any, selectedQuestion: any, index: number) => {
     selected[index] = e.target.value;
     if (selectedQuestion.correct_answer == e.target.value) {
       score[index] = true;
@@ -60,7 +60,7 @@ const QuestionCardMap: React.FC = () => {
                       labelId="answer-select-label"
                       onChange={(e) => handleAnswerChange(e, item, index)}
                     >
-                      {allQuestions[index]?.map((answer) => (
+                      {allQuestions[index]?.map((answer: string) => (
                         <MenuItem key={answer} value={answer}>
                           <span
                             dangerouslySetInnerHTML={createMarkup(answer)}
