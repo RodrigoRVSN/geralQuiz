@@ -7,21 +7,15 @@ export const HeaderAppBar = styled(AppBar)`
   height: 12vh;
   border-radius: 0 0 1rem 1rem;
 
-    ${({ theme }) => theme.breakpoints.up("md")} {
+  ${({ theme }) => theme.breakpoints.up("md")} {
     .MuiToolbar-root {
       height: 10vh;
-    }
-  }
-
-  ${({ theme }) => theme.breakpoints.down("md")} {
-    .MuiToolbar-root {
-      display: flex;
-      justify-content: center;
     }
   }
 `;
 
 export const HeaderLogo = styled("h2")`
+  margin: auto;
   font-size: 2.5rem;
   color: ${({ theme }) => theme.palette.primary.dark};
   ${({ theme }) => theme.breakpoints.up("md")} {

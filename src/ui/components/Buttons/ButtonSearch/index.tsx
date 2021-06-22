@@ -8,6 +8,7 @@ const ButtonCancel: React.FC = () => {
   return (
     <>
       <Button
+        data-testid="btn-search"
         variant={"contained"}
         color={"secondary"}
         sx={{ marginTop: 3 }}

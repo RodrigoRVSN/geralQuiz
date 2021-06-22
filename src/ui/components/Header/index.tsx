@@ -1,5 +1,5 @@
 import React from "react";
-import { HeaderAppBar, HeaderLogo } from "./Header.style";
+import { HeaderAppBar, HeaderLogo } from "./style";
 import { Container, Toolbar } from "@material-ui/core";
 
 const Header: React.FC = () => {
@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     <>
       <HeaderAppBar position={"sticky"}>
         <Toolbar component={Container}>
-          <HeaderLogo>GERAL QUIZ</HeaderLogo>
+          <HeaderLogo><a data-testid="homePage" href="/">GERAL QUIZ</a></HeaderLogo>
         </Toolbar>
       </HeaderAppBar>
     </>

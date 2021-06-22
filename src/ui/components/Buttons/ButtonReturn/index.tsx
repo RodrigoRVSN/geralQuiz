@@ -17,7 +17,7 @@ const ButtonReturn: React.FC = () => {
       <Button
         variant={"contained"}
         color={"primary"}
-        sx={{ marginTop: 5 }}
+        sx={{ marginBottom: 5 }}
         size={"large"}
         onClick={() => reset()}
       >

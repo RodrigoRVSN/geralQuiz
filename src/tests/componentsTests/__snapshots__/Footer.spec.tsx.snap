@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should match snapshot 1`] = `
+<div>
+  <footer
+    class="css-o47hxc"
+  >
+    <p
+      class="MuiTypography-root MuiTypography-body2 css-11huu28-MuiTypography-root"
+    >
+      <a
+        data-testid="aboutLink"
+        href="https://github.com/RodrigoRVSN"
+        target="_blank"
+      >
+        Desenvolvido por Rodrigo
+      </a>
+    </p>
+  </footer>
+</div>
+`;

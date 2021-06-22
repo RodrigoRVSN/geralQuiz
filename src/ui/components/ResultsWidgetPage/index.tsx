@@ -20,10 +20,10 @@ const ResultsWidgetPage = () => {
             {correctAnswers + " of"}
             {" " + score.length + " ✔️"}
           </Typography>
+        <ButtonReturn />
 
           <ResultCardMap />
         </Container>
-        <ButtonReturn />
       </BoxQuestions>
     </>
   );

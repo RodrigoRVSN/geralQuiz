@@ -10,8 +10,8 @@ ________________________________________________________________________________
 - React Framework (TS) + NextJS
 - Material UI
 - Context API
-- [Loading...] Testes com Jest
-- [Loading...] ...
+- Testes com Jest
+- Formik + yup
 
 _________________________________________________________________________________________________________________________________________________________
 
@@ -22,6 +22,7 @@ ________________________________________________________________________________
 - Uso de Context API de diversos States
 - Uso de Contexto com tipagem do Typescript
 - Uso de lógicas e princípios do javascript com uso de forEach e Map
+- Realizar testes unitários simples de componentes com jest
 
 ___________________________________________________________________________________________________________________________________________________________________
 

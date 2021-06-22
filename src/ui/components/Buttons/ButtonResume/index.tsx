@@ -3,6 +3,7 @@ import { Button } from "@material-ui/core";
 import { useQuestion } from "../../../../data/hooks/useQuestion.page";
 
 const ButtonResume: React.FC = () => {
+  
   const { searchResume, hasLocalStorage, setHasLocalStorage } = useQuestion();
 
   useEffect(() => {
